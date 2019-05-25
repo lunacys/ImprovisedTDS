@@ -1,0 +1,8 @@
+[submodule "3rdParty/glfw"]
+	path = 3rdParty/glfw
+	url = https://github.com/glfw/glfw.git
+	branch = 3.3-stable
+[submodule "3rdParty/stb"]
+	path = 3rdParty/stb
+	url = https://github.com/nothings/stb.git
+	branch = master
