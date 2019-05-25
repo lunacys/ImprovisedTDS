@@ -44,12 +44,13 @@ inline SpriteBatch::SpriteBatch()
 	};
 
 	glGenVertexArrays(1, &this->quadVao_);
+	glBindVertexArray(this->quadVao_);
 	glGenBuffers(1, &vbo);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof vertices, vertices, GL_DYNAMIC_DRAW);
 
-	glBindVertexArray(this->quadVao_);
+	
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof GLfloat, static_cast<GLvoid*>(nullptr));
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -106,7 +107,7 @@ inline void SpriteBatch::Begin(glm::mat4 view, Shader* shader)
 		}
 		else
 		{
-			//std::cout << "> No shader in, using default shader" << std::endl;
+			std::cout << "> No shader in, using default shader" << std::endl;
 			currentShaderUsing_ = defaultShader_;
 		}
 	}
@@ -119,10 +120,13 @@ inline void SpriteBatch::Begin(glm::mat4 view, Shader* shader)
 		-1.0f,
 		1.0f);
 
+	currentShaderUsing_->Use();
 	currentShaderUsing_->SetUniform("projection", projection);
+
 	currentShaderUsing_->SetUniform("view", view);
 
 	currentShaderUsing_->Use();
+
 }
 
 inline void SpriteBatch::End()
@@ -168,7 +172,7 @@ inline void SpriteBatch::Draw(Texture2D* texture, glm::vec2 position, glm::vec3 
 		return;
 	}
 
-	glm::mat4 model;
+	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(position, 0.0f));
 
 	//glm::vec2 offset(origin.x / size.x, origin.y / size.y);
@@ -178,6 +182,7 @@ inline void SpriteBatch::Draw(Texture2D* texture, glm::vec2 position, glm::vec3 
 
 	model = glm::scale(model, glm::vec3(size, 1.0f));
 
+	currentShaderUsing_->Use();
 	currentShaderUsing_->SetUniform("model", model);
 	currentShaderUsing_->SetUniform("spriteColor", color);
 

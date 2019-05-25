@@ -15,7 +15,7 @@ Player::~Player()
 
 void Player::Update(const float dt)
 {
-	position.X += 16 * dt;
+	//position.X += 16 * dt;
 	//position.Y += 16.5f * dt;
 }
 

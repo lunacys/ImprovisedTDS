@@ -22,7 +22,9 @@ public:
 	{
 		this->FollowingEntity = followingEntity;
 		this->Position = position;
+		this->Velocity = glm::vec2(0.0f, 0.0f);
 		this->Origin = glm::vec3(400.0f, 300.0f, 0.0f);
+		this->MovementSpeed = 1;
 		//this->Rotation = 0.0f;
 	}
 

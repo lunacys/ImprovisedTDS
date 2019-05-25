@@ -1,5 +1,5 @@
 ﻿#define STB_IMAGE_IMPLEMENTATION
-#define GL_ALPHA_TEST 0x0BC0
+//#define GL_ALPHA_TEST 0x0BC0
 #include "ImprovisedTDS.hpp"
 #include "EntityManager.hpp"
 #include "AssetBank.hpp"
@@ -69,7 +69,7 @@ void ImprovisedTDS::Exit()
 void ImprovisedTDS::Initialize()
 {
 	glfwSetErrorCallback(ErrorCallback);
-
+	
 	if (!glfwInit())
 		throw std::exception("ERROR: Couldn't initialize GLFW");
 
@@ -83,19 +83,21 @@ void ImprovisedTDS::Initialize()
 		throw std::exception("ERROR: Couldn't create GLFW window");
 
 	glfwMakeContextCurrent(gameWindow_);
+	glfwSwapInterval(1);
 
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	auto output = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+	if (!output)
 	{
 		throw std::exception("ERROR: Failed to initialize OpenGL context");
 	}
 
-	glfwSwapInterval(1);
-
 	// TODO: Check this!
-	glEnable(GL_ALPHA_TEST);
+	//glEnable(GL_ALPHA_TEST);
+	//std::cout << glGetError() << std::endl;
 	glEnable(GL_BLEND);
+	
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	 
+	
 	glViewport(0, 0, windowWidth_, windowHeight_);
 
 	content_ = new ContentManager();
@@ -147,6 +149,7 @@ void ImprovisedTDS::Update(double dt)
 	//content_->GetShader("Sprite")->SetUniform("view", camera_->GetViewMatrix());
 	//camera_->MoveTo(glm::vec2(100, 100), 1, dt);
 	camera_->Update(dt);
+	camera_->LookAt(glm::vec2(0, 0));
 	EntityManager::Update(float(dt));
 }
 
