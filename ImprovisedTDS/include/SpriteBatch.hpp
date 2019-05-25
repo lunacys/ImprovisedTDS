@@ -1,12 +1,10 @@
 #pragma once
-#include <GL/glew.h>
-
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
 
 #include "Shader.hpp"
 #include "Texture2D.hpp"
-#include "Vector2.hpp"
+#include "glad/glad.h"
 
 class SpriteBatch
 {

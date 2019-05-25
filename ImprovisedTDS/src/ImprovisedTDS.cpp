@@ -1,7 +1,10 @@
-﻿#include "ImprovisedTDS.hpp"
+﻿#define STB_IMAGE_IMPLEMENTATION
+
+#include "ImprovisedTDS.hpp"
 #include "EntityManager.hpp"
 #include "AssetBank.hpp"
 #include "Player.hpp"
+#include <ctime>
 
 ImprovisedTDS::ImprovisedTDS()
 { }
@@ -80,12 +83,15 @@ void ImprovisedTDS::Initialize()
 
 	glfwMakeContextCurrent(gameWindow_);
 
-	if (glewInit() != GLEW_OK)
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
 		throw std::exception("ERROR: Failed to initialize OpenGL context");
+	}
 
 	glfwSwapInterval(1);
 
-	glEnable(GL_ALPHA_TEST);
+	// TODO: Check this!
+	//glEnable(GL_ALPHA_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	 

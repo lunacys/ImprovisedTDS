@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include <GL/glew.h>
+#include <glad/glad.h>
 
 // TODO: Texture2D class should contain only Color Data and Image Data (width, height, color type etc)
 class Texture2D

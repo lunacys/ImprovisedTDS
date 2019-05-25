@@ -21,10 +21,10 @@ Texture2D* AssetBank::Wall3 = nullptr;
 
 inline void AssetBank::LoadAll()
 {
-	Floor = PngReader::ReadFromFile("Content/Floor.png");
-	Wall1 = PngReader::ReadFromFile("Content/Wall1.png");
-	Wall2 = PngReader::ReadFromFile("Content/Wall2.png");
-	Wall3 = PngReader::ReadFromFile("Content/Wall3.png");
+	Floor = PngReader::ReadFromFile("data/images/Floor.png");
+	Wall1 = PngReader::ReadFromFile("data/images/Wall1.png");
+	Wall2 = PngReader::ReadFromFile("data/images/Wall2.png");
+	Wall3 = PngReader::ReadFromFile("data/images/Wall3.png");
 }
 
 inline void AssetBank::CleanUp()

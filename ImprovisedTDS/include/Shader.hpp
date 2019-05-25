@@ -4,9 +4,9 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#include <GL/glew.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <glad/glad.h>
+#include <glm.hpp>
+#include <gtc/type_ptr.hpp>
 
 
 // TODO: Shader class should compile itself and provide any shader data (uniforms etc)
