@@ -11,16 +11,15 @@ include_directories(
   ${PROJECT_NAME}/include/
   )
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_GLIBCXX_DEBUG")
-if (WIN32)
-  #option(SFML_USE_STATIC_STD_LIBS OFF) # Windows only
-elseif (APPLE)
-  #if ((${CMAKE_SYSTEM_NAME} MATCHES "Darwin"))
-  #  set(SFML_BUILD_FRAMEWORKS ON)
-  #  set(SFML_OSX_ARCHITECTURES "x86_64")
-  #  set(SFML_INSTALL_XCODE_TEMPLATES OFF)
-  #endif()
+if(MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wa -O3 -mbig-obj -Wall -Wextra -Wpedantic -std=c++11")
+    if(NOT WIN32)
+        set(GLAD_LIBRARIES dl)
+    endif()
 endif()
+
 option(BUILD_SHARED_LIBS OFF)
 
 set(GLFW_BUILD_DOCS OFF)
