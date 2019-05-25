@@ -1,10 +1,11 @@
 ﻿#define STB_IMAGE_IMPLEMENTATION
-
+#define GL_ALPHA_TEST 0x0BC0
 #include "ImprovisedTDS.hpp"
 #include "EntityManager.hpp"
 #include "AssetBank.hpp"
 #include "Player.hpp"
 #include <ctime>
+
 
 ImprovisedTDS::ImprovisedTDS()
 { }
@@ -91,7 +92,7 @@ void ImprovisedTDS::Initialize()
 	glfwSwapInterval(1);
 
 	// TODO: Check this!
-	//glEnable(GL_ALPHA_TEST);
+	glEnable(GL_ALPHA_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	 
