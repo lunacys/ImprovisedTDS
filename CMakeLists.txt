@@ -58,10 +58,11 @@ file(GLOB PROJECT_FONTS ${PROJECT_NAME}/data/fonts/*.png
 file(GLOB PROJECT_SHADERS ${PROJECT_NAME}/data/shaders/*.vert
   ${PROJECT_NAME}/data/shaders/*.frag
   )
-file(GLOB PROJECT_SFX ${PROJECT_NAME}/data/sfx/*.wav
-  ${PROJECT_NAME}/data/images/*.png
-  )
-file(GLOB PROJECT_CONFIGS CMakeLists.txt )
+file(GLOB PROJECT_SFX ${PROJECT_NAME}/data/sfx/*.wav)
+file(GLOB PROJECT_CONFIGS CMakeLists.txt 
+  CMakeSettings.json
+  .gitignore
+  .gitmodules)
 
 add_definitions(-DGLFW_INCLUDE_NONE -DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
 add_definitions(-DCMAKE-C-FLAGS)
