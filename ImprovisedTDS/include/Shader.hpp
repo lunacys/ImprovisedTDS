@@ -7,7 +7,7 @@
 #include <glad/glad.h>
 #include <glm.hpp>
 #include <gtc/type_ptr.hpp>
-
+#include <stdexcept>
 
 // TODO: Shader class should compile itself and provide any shader data (uniforms etc)
 class Shader

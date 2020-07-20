@@ -333,3 +333,5 @@ out/
 /ImprovisedTDS/*.exe
 /ImprovisedTDS/*.pdb
 /ImprovisedTDS/*.ilk
+
+/cmake-build-debug/**/*

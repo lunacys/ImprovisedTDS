@@ -71,7 +71,7 @@ void ImprovisedTDS::Initialize()
 	glfwSetErrorCallback(ErrorCallback);
 	
 	if (!glfwInit())
-		throw std::exception("ERROR: Couldn't initialize GLFW");
+		throw std::runtime_error("ERROR: Couldn't initialize GLFW");
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -80,7 +80,7 @@ void ImprovisedTDS::Initialize()
 
 	gameWindow_ = glfwCreateWindow(windowWidth_, windowHeight_, "Improvised TDS", nullptr, nullptr);
 	if (!gameWindow_)
-		throw std::exception("ERROR: Couldn't create GLFW window");
+		throw std::runtime_error("ERROR: Couldn't create GLFW window");
 
 	glfwMakeContextCurrent(gameWindow_);
 	glfwSwapInterval(1);
@@ -88,7 +88,7 @@ void ImprovisedTDS::Initialize()
 	auto output = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 	if (!output)
 	{
-		throw std::exception("ERROR: Failed to initialize OpenGL context");
+		throw std::runtime_error("ERROR: Failed to initialize OpenGL context");
 	}
 
 	// TODO: Check this!
